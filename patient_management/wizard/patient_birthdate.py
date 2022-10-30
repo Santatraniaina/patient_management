@@ -5,3 +5,5 @@ class PatientBirthdate(models.TransientModel):
     _description = 'Description'
 
     birthdate = fields.Date(string='Birthdate')
+
+    # def compute_age(self):

@@ -19,7 +19,10 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': [
+        'base',
+        'mail'
+    ],
 
     # always loaded
     'data': [
@@ -30,6 +33,9 @@
         'views/patient_list_views.xml',
 
         # wizard
-        # 'wizard/patient_list_views.xml',
+        'wizard/patient_birthday_view.xml',
+
+        #reports
+        'reports/patient_list_report_view.xml',
     ],
 }

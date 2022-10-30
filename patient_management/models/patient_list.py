@@ -5,12 +5,13 @@ from odoo import models, fields, api, _
 
 class PatientList(models.Model):
     _name = 'patient.list'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Patient list to manage'
 
     name = fields.Char(string='Full name', compute="_concat_name")
-    first_name = fields.Char(string='First name',default='')
+    first_name = fields.Char(string='First name', default='')
     last_name = fields.Char(string='Last name', default='')
-    age = fields.Integer(string='Age')
+    age = fields.Integer(string='Age', tracking=True)
     state = fields.Selection(
         [('new', 'New'), ('consulted', 'Consulted'), ('treated', 'Treated'), ('cancelled', 'Cancelled')],
         default='new'
@@ -19,7 +20,7 @@ class PatientList(models.Model):
     @api.depends('first_name', 'last_name')
     def _concat_name(self):
         for record in self:
-            record.name = "%s %s"%(record.first_name,record.last_name)
+            record.name = "%s %s" % (record.first_name, record.last_name)
 
     def consult(self):
         self.write({'state': "consulted"})
@@ -33,7 +34,7 @@ class PatientList(models.Model):
     def renew(self):
         self.write({'state': "new"})
 
-    def compute_age(self):
+    def patient_birthdate_wizard(self):
         return {
             'name': _('Patient birthdate'),
             'type': 'ir.actions.act_window',
