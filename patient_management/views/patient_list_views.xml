@@ -11,7 +11,7 @@
                 <button name="treat" string="Treat" class="oe_highlight" states="consulted" type="object"/>
                 <button name="cancel" string="Cancel" class="oe_highlight" states="treated" type="object"/>
                 <button name="renew" string="Renew" class="oe_highlight" states="cancelled" type="object"/>
-                <button name="patient_birthdate_wizard" string="Compute age" class="oe_highlight" states="" type="object"/>
+                <button name="patient_birthdate_wizard" string="Compute age" class="oe_highlight" type="object"/>
                 <field name="state" widget="statusbar" statusbar_visible="new,consulted,treated,cancelled"/>
               </header>
               <sheet>
@@ -52,23 +52,6 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="patient_management.action_server">
-      <field name="name">patient_management server</field>
-      <field name="model_id" ref="model_patient_management_patient_management"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
     <!-- Top menu item -->
     <menuitem name="Patient" id="patient_management_menu_root"/>
     <!-- menu categories -->
@@ -80,6 +63,6 @@
       parent="patient_management_menu"
       action="patient_list_action_window"
     />
--->
+
   </data>
 </odoo>

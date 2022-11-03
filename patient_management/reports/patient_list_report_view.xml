@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <report
+            id="report_patient_list_view"
+            model="patient.list"
+            string="Report patient"
+            name="patient_management.report_patient_list_view"
+            file="patient_management.report_patient_list_view"
+            report_type="qweb-pdf"
+        />
+<!--        <record id="report_patient_list" model="ir.actions.report">-->
+<!--            <field name="name">Report patient</field>-->
+<!--            <field name="model">patient.list</field>-->
+<!--            <field name="report_type">qweb-pdf</field>-->
+<!--            <field name="report_name">patient_management.report_patient_list_view</field>-->
+<!--            <field name="report_file">patient_management.report_patient_list_view</field>-->
+<!--        </record>-->
+
+        <template id="report_patient_list_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <header>
+                                <table class="table">
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Name</th>
+                                      <td><t t-esc="doc.name"/></td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Age</th>
+                                      <td><t t-esc="doc.age"/></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </header>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

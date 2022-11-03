@@ -10,7 +10,7 @@
                     <field name="birthdate"/>
                 </sheet>
                  <footer>
-<!--                   <button type="object" name="compute_age" class="btn btn-primary" string="Save"/>-->
+                   <button type="object" name="compute_age" class="btn btn-primary" string="Save"/>
                    <button string="Cancel" special="cancel"/>
                </footer>
             </form>
